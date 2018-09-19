@@ -238,6 +238,16 @@ class LexerTest extends TestCase
             [
                 'kind'  => Token::STRING,
                 'start' => 0,
+                'end'   => 16,
+                'value' => "single quote '",
+            ],
+            (array) $this->lexOne('"single quote \'"')
+        );
+
+        $this->assertArraySubset(
+            [
+                'kind'  => Token::STRING,
+                'start' => 0,
                 'end'   => 10,
                 'value' => 'quote "',
             ],
@@ -319,6 +329,16 @@ class LexerTest extends TestCase
                 'value' => ' white space ',
             ],
             (array) $this->lexOne('""" white space """')
+        );
+
+        $this->assertArraySubset(
+            [
+                'kind'  => Token::BLOCK_STRING,
+                'start' => 0,
+                'end'   => 29,
+                'value' => "contains ' single quote",
+            ],
+            (array) $this->lexOne('"""contains \' single quote"""')
         );
 
         $this->assertArraySubset(

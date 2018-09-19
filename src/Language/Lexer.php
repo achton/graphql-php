@@ -465,6 +465,9 @@ class Lexer
                     case 34:
                         $value .= '"';
                         break;
+                    case 39:
+                        $value .= "'";
+                        break;
                     case 47:
                         $value .= '/';
                         break;
